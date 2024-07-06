@@ -7,7 +7,7 @@ uniform vec2 uFrequency;
 
 attribute vec3 position;
 attribute vec2 uv;
-// attribute float Arandom;
+attribute float Arandom;
 
 // varying float Vrandom;
 varying vec2 vUv;

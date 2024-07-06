@@ -34,36 +34,36 @@ function App() {
     parameters.lightColor = 0xffffff
 
     //object
-    const geometry = new THREE.PlaneGeometry(8,8,80,80)
-    
+    const geometry = new THREE.PlaneGeometry(8, 8, 80, 80)
+
     const count = geometry.attributes.position.count
     const randoms = new Float32Array(count)
     for (let index = 0; index < count; index++) {
-     randoms[index] = Math.random()
+      randoms[index] = Math.random()
     }
-    geometry.setAttribute('Arandom' , new THREE.BufferAttribute(randoms , 1))
-    
+    geometry.setAttribute('Arandom', new THREE.BufferAttribute(randoms, 1))
+
 
 
     const material = new THREE.RawShaderMaterial({
-      vertexShader : vertexShader,
-      fragmentShader : fragmentShader ,
-      transparent:true,
-      uniforms : {
-        uFrequency : { value : new THREE.Vector2(2.5,2)},
-        uTime : { value : 0},
-        uColor : { value : new THREE.Color('cyan')},
-        uTexture : { value : flag}
+      vertexShader: vertexShader,
+      fragmentShader: fragmentShader,
+      transparent: true,
+      uniforms: {
+        uFrequency: { value: new THREE.Vector2(2.5, 2) },
+        uTime: { value: 0 },
+        uColor: { value: new THREE.Color('cyan') },
+        uTexture: { value: flag }
       }
     })
     console.log(material.uniforms.uFrequency)
-    gui.add(material.uniforms.uFrequency.value , 'x').min(0).max(10).step(0.001).name('frequencyX')
-    gui.add(material.uniforms.uFrequency.value , 'y').min(0).max(10).step(0.001).name('frequencyY')
+    gui.add(material.uniforms.uFrequency.value, 'x').min(0).max(10).step(0.001).name('frequencyX')
+    gui.add(material.uniforms.uFrequency.value, 'y').min(0).max(10).step(0.001).name('frequencyY')
 
 
-    const object = new THREE.Mesh(geometry , material)
+    const object = new THREE.Mesh(geometry, material)
     object.material.side = THREE.DoubleSide
-    object.scale.y = 2/3
+    object.scale.y = 2 / 3
     scene.add(object)
 
     //camera
@@ -97,7 +97,7 @@ function App() {
     renderer.toneMappingExposure = 3
     renderer.shadowMap.type = THREE.PCFShadowMap
 
-   
+
 
 
     //resize
